@@ -19,7 +19,7 @@ class ContactForm extends Component {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const newContact = {
       id: nanoid(),
@@ -27,7 +27,7 @@ class ContactForm extends Component {
       number: this.state.number,
     };
     this.props.onSubmit(newContact);
-    this.reset()
+    this.reset();
   };
 
   reset = () => {
@@ -37,36 +37,35 @@ class ContactForm extends Component {
   render() {
     return (
       // <Formik initialValues={this.state} onSubmit={this.handleSubmit}>
-        <Form onSubmit={this.handleSubmit}> 
-          <Label>
-            Name
-            <Input
-              onChange={this.handleChange}
-              value={this.state.name}
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-            {/* <ErrorMessage name="name" /> */}
-          </Label>
-          <Label>
-            Number
-            <Input
-              onChange={this.handleChange}
-              value={this.state.number}
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </Label>
-          <button type="submit">Add contact</button>
-        </Form>
+      <Form onSubmit={this.handleSubmit}>
+        <Label>
+          Name
+          <Input
+            onChange={this.handleChange}
+            value={this.state.name}
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+          {/* <ErrorMessage name="name" /> */}
+        </Label>
+        <Label>
+          Number
+          <Input
+            onChange={this.handleChange}
+            value={this.state.number}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+        </Label>
+        <button type="submit">Add contact</button>
+      </Form>
     );
   }
 }
-
 export default ContactForm;
