@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Form, Label, Input } from './ContactForm.styled';
+import PropTypes from 'prop-types';
 
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
 // import * as yup from 'yup';
@@ -68,3 +69,7 @@ class ContactForm extends Component {
   }
 }
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onChange: PropTypes.func,
+}
